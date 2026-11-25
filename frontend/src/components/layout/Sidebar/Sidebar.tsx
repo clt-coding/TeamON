@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Icon } from "../../ui/Icon";
 import { POSITIONS, positionMarks } from "../../../data/positions";
+import { useTranslation } from "../../../i18n";
 import type { Position } from "../../../types";
 import { cx } from "../../../utils/cx";
 import styles from "./Sidebar.module.css";
@@ -20,6 +21,7 @@ export function Sidebar({
   positions,
   onPositionsChange,
 }: SidebarProps) {
+  const { t } = useTranslation();
   const [searchType, setSearchType] = useState<SearchType>("player");
   const [voiceChat, setVoiceChat] = useState(true);
 
@@ -37,7 +39,7 @@ export function Sidebar({
         type="button"
         className={styles.collapseButton}
         onClick={() => onCollapsedChange(!collapsed)}
-        aria-label={collapsed ? "Rozwiń filtry" : "Zwiń filtry"}
+        aria-label={collapsed ? t("sidebar.expand") : t("sidebar.collapse")}
         aria-expanded={!collapsed}
       >
         <Icon name="chevron" />
@@ -45,13 +47,13 @@ export function Sidebar({
       {collapsed ? (
         <div className={styles.collapsedLabel}>
           <Icon name="sliders" />
-          <span>FILTRY</span>
+          <span>{t("sidebar.filters")}</span>
         </div>
       ) : (
         <>
           <div className={styles.heading}>
-            <span>WYSZUKIWANIE</span>
-            <h2>Czego szukasz?</h2>
+            <span>{t("sidebar.kicker")}</span>
+            <h2>{t("sidebar.heading")}</h2>
           </div>
           <div className={styles.searchType}>
             <button
@@ -60,7 +62,7 @@ export function Sidebar({
               aria-pressed={searchType === "player"}
               onClick={() => setSearchType("player")}
             >
-              <Icon name="users" size={18} /> Gracza
+              <Icon name="users" size={18} /> {t("sidebar.searchPlayer")}
             </button>
             <button
               type="button"
@@ -68,12 +70,12 @@ export function Sidebar({
               aria-pressed={searchType === "tournament"}
               onClick={() => setSearchType("tournament")}
             >
-              Turnieju
+              {t("sidebar.searchTournament")}
             </button>
           </div>
           <div className={styles.filterGroup}>
             <label>
-              POZYCJA{" "}
+              {t("sidebar.position")}{" "}
               <span>{positions.length ? `0${positions.length}` : ""}</span>
             </label>
             <div className={styles.positionList}>
@@ -92,12 +94,12 @@ export function Sidebar({
             </div>
           </div>
           <div className={styles.filterGroup}>
-            <label htmlFor="language-filter">JĘZYK</label>
+            <label htmlFor="language-filter">{t("sidebar.language")}</label>
             <select id="language-filter">
-              <option>Dowolny język</option>
-              <option>Polski</option>
-              <option>Angielski</option>
-              <option>Niemiecki</option>
+              <option>{t("sidebar.anyLanguage")}</option>
+              <option>{t("sidebar.polish")}</option>
+              <option>{t("sidebar.english")}</option>
+              <option>{t("sidebar.german")}</option>
             </select>
           </div>
           <div className={cx(styles.filterGroup, styles.voiceFilter)}>
@@ -109,7 +111,7 @@ export function Sidebar({
                 aria-pressed={voiceChat}
                 onClick={() => setVoiceChat(true)}
               >
-                Tak
+                {t("sidebar.yes")}
               </button>
               <button
                 type="button"
@@ -117,7 +119,7 @@ export function Sidebar({
                 aria-pressed={!voiceChat}
                 onClick={() => setVoiceChat(false)}
               >
-                Nie
+                {t("sidebar.no")}
               </button>
             </div>
           </div>
@@ -126,7 +128,7 @@ export function Sidebar({
             className={styles.clearFilters}
             onClick={() => onPositionsChange([])}
           >
-            Wyczyść filtry
+            {t("sidebar.clearFilters")}
           </button>
         </>
       )}

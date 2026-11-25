@@ -1,4 +1,5 @@
 import { positionMarks } from "../../../data/positions";
+import { useTranslation } from "../../../i18n";
 import type { Player } from "../../../types";
 import { cx } from "../../../utils/cx";
 import styles from "./PlayerCard.module.css";
@@ -10,6 +11,7 @@ export interface PlayerCardProps {
 }
 
 export function PlayerCard({ player, onOpen, className }: PlayerCardProps) {
+  const { t } = useTranslation();
   return (
     <button
       type="button"
@@ -17,7 +19,7 @@ export function PlayerCard({ player, onOpen, className }: PlayerCardProps) {
       onClick={() => onOpen(player)}
     >
       <div className={styles.image}>
-        <img src={player.image} alt={`Zdjęcie profilowe ${player.username}`} />
+        <img src={player.image} alt={t("card.photoAlt", { name: player.username })} />
         <span className={cx(styles.status, player.online && styles.online)}>
           {player.online ? "ONLINE" : "OFFLINE"}
         </span>
