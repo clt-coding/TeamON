@@ -1,7 +1,9 @@
+import { useTranslation } from "../../../../i18n";
 import type { Player } from "../../../../types";
 import styles from "./SocialProof.module.css";
 
 export function SocialProof({ avatars, count }: { avatars: Player[]; count: string }) {
+  const { t } = useTranslation();
   return (
     <div className={styles.socialProof}>
       <div className={styles.avatars}>
@@ -11,7 +13,7 @@ export function SocialProof({ avatars, count }: { avatars: Player[]; count: stri
       </div>
       <div>
         <strong>{count}</strong>
-        <span>graczy już szuka drużyny</span>
+        <span>{t("socialProof.text")}</span>
       </div>
     </div>
   );

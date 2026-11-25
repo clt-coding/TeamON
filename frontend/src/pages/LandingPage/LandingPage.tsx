@@ -4,6 +4,7 @@ import { Icon } from "../../components/ui/Icon";
 import { LanguageToggle } from "../../components/ui/LanguageToggle";
 import { Logo } from "../../components/ui/Logo";
 import { players } from "../../data/players.mock";
+import { useTranslation } from "../../i18n";
 import { ROUTES } from "../../routes";
 import { cx } from "../../utils/cx";
 import { HeroCard } from "./components/HeroCard";
@@ -12,6 +13,7 @@ import styles from "./LandingPage.module.css";
 
 export function LandingPage() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   // Auth is mocked for the POC: both actions go straight to the dashboard.
   const enterApp = () => navigate(ROUTES.dashboard);
 
@@ -30,22 +32,23 @@ export function LandingPage() {
 
         <div className={styles.content}>
           <div className={cx("kicker", styles.eyebrow)}>
-            <span /> TWOJA GRA. TWOJA EKIPA.
+            <span /> {t("landing.eyebrow")}
           </div>
           <h1>
-            Przestań grać
-            <br />z <em className="accent">przypadkiem.</em>
+            {t("landing.titleLine1")}
+            <br />
+            {t("landing.titleLine2")}{" "}
+            <em className="accent">{t("landing.titleAccent")}</em>
           </h1>
           <p className={styles.lead}>
-            Masz dość grania z losowymi osobami? Tutaj znajdziesz swoje duo
-            idealnie pasujące do Ciebie.
+            {t("landing.lead")}
           </p>
           <div className={styles.actions}>
             <Button variant="primary" onClick={enterApp}>
-              Zarejestruj się <Icon name="arrow" size={18} />
+              {t("landing.register")} <Icon name="arrow" size={18} />
             </Button>
             <Button variant="secondary" onClick={enterApp}>
-              Zaloguj się
+              {t("landing.login")}
             </Button>
           </div>
           <SocialProof avatars={players.slice(1, 4)} count="4 800+" />
@@ -56,8 +59,7 @@ export function LandingPage() {
         <div className={styles.caption}>
           <span>02</span>
           <p>
-            Brakuje Wam ostatniej osoby w drużynie do zagrania na turnieju? W
-            TeamON szybko znajdziesz brakującego gracza.
+            {t("landing.caption")}
           </p>
         </div>
       </section>

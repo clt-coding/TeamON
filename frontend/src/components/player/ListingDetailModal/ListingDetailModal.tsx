@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { Button } from "../../ui/Button";
 import { Icon } from "../../ui/Icon";
+import { useTranslation } from "../../../i18n";
 import { profilePath } from "../../../routes";
 import type { Player } from "../../../types";
 import styles from "./ListingDetailModal.module.css";
@@ -17,6 +18,7 @@ const initials = (name: string) =>
 export function ListingDetailModal({ player, onClose }: ListingDetailModalProps) {
   const [sent, setSent] = useState(false);
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   useEffect(() => {
     const onKeyDown = (event: KeyboardEvent) => {
@@ -38,13 +40,13 @@ export function ListingDetailModal({ player, onClose }: ListingDetailModalProps)
         onMouseDown={(event) => event.stopPropagation()}
         aria-modal="true"
         role="dialog"
-        aria-label="Szczegóły ogłoszenia"
+        aria-label={t("modal.label")}
       >
         <button
           type="button"
           className={styles.close}
           onClick={onClose}
-          aria-label="Zamknij"
+          aria-label={t("modal.close")}
         >
           <Icon name="close" />
         </button>
@@ -64,18 +66,18 @@ export function ListingDetailModal({ player, onClose }: ListingDetailModalProps)
           </div>
         </div>
         <div className={styles.content}>
-          <span className="kicker">OGŁOSZENIE GRACZA</span>
+          <span className="kicker">{t("modal.kicker")}</span>
           <h2>“{player.title}”</h2>
           <p>{player.description}</p>
           <div className={styles.statGrid}>
             <div>
               <Icon name="clock" />
-              <span>DOŚWIADCZENIE</span>
-              <strong>{player.yearsPlaying} lat</strong>
+              <span>{t("modal.experience")}</span>
+              <strong>{t("modal.years", { count: player.yearsPlaying })}</strong>
             </div>
             <div>
               <span className={styles.rankGem}>◆</span>
-              <span>AKTUALNA RANGA</span>
+              <span>{t("modal.currentRank")}</span>
               <strong>{player.rank}</strong>
             </div>
             <div>
@@ -85,7 +87,7 @@ export function ListingDetailModal({ player, onClose }: ListingDetailModalProps)
             </div>
           </div>
           <div className={styles.champions}>
-            <span>ULUBIENI BOHATEROWIE</span>
+            <span>{t("modal.favouriteChampions")}</span>
             {player.favouriteChampions.map((champion) => (
               <div key={champion}>
                 <b>{initials(champion)}</b> {champion}
@@ -98,11 +100,11 @@ export function ListingDetailModal({ player, onClose }: ListingDetailModalProps)
               className={styles.primaryAction}
               onClick={() => setSent(true)}
             >
-              {sent ? "Prośba wysłana" : "Wyślij prośbę o dołączenie"}{" "}
+              {sent ? t("modal.requestSent") : t("modal.sendRequest")}{" "}
               <Icon name="arrow" size={18} />
             </Button>
             <Button variant="secondary" onClick={openProfile}>
-              Zobacz profil
+              {t("modal.viewProfile")}
             </Button>
           </div>
         </div>

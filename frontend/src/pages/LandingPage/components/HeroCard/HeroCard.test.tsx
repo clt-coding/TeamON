@@ -1,11 +1,12 @@
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import { players } from "../../../../data/players.mock";
 import { HeroCard } from "./HeroCard";
+import { renderWithProviders } from "../../../../test/renderWithProviders";
 
 describe("HeroCard", () => {
   it("shows the featured player", () => {
     const player = players[0];
-    render(<HeroCard player={player} />);
+    renderWithProviders(<HeroCard player={player} />);
     expect(screen.getByRole("heading")).toHaveTextContent(
       `${player.username} ${player.age}`,
     );

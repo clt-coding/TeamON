@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate, useParams } from "react-router";
 import { ListingDetailModal } from "../../components/player/ListingDetailModal";
 import { currentUser, findPlayerByUsername } from "../../data/players.mock";
+import { useTranslation } from "../../i18n";
 import { ROUTES } from "../../routes";
 import type { Player } from "../../types";
 import { NotFoundPage } from "../NotFoundPage";
@@ -13,6 +14,7 @@ import styles from "./ProfilePage.module.css";
 export function ProfilePage() {
   const { username = "" } = useParams();
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const [selected, setSelected] = useState<Player | null>(null);
 
   const isOwnProfile =
@@ -29,23 +31,33 @@ export function ProfilePage() {
         className={styles.backButton}
         onClick={() => navigate(ROUTES.dashboard)}
       >
-        ← WRÓĆ DO OGŁOSZEŃ
+        {t("profile.back")}
       </button>
 
       <ProfileHeader player={player} isOwnProfile={isOwnProfile} />
 
       <div className={styles.grid}>
-        <ProfilePanel kicker="01 / O MNIE" title="Opis" className={styles.bioPanel}>
+        <ProfilePanel
+          kicker={t("profile.aboutKicker")}
+          title={t("profile.aboutTitle")}
+          className={styles.bioPanel}
+        >
           <p>{player.bio}</p>
         </ProfilePanel>
-        <ProfilePanel kicker="02 / ZAINTERESOWANIA" title="Zainteresowania">
+        <ProfilePanel
+          kicker={t("profile.interestsKicker")}
+          title={t("profile.interestsTitle")}
+        >
           <div className={styles.tags}>
             {player.interests.map((interest) => (
               <b key={interest}>{interest}</b>
             ))}
           </div>
         </ProfilePanel>
-        <ProfilePanel kicker="03 / GRY" title="W co gram">
+        <ProfilePanel
+          kicker={t("profile.gamesKicker")}
+          title={t("profile.gamesTitle")}
+        >
           {player.games.map((game) => (
             <div key={game.name} className={styles.gameRow}>
               <div aria-hidden="true">LoL</div>

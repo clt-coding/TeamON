@@ -1,16 +1,18 @@
 import { positionMarks } from "../../../../data/positions";
+import { useTranslation } from "../../../../i18n";
 import type { Player } from "../../../../types";
 import styles from "./HeroCard.module.css";
 
 /** "Recently joined" showcase card on the landing page. */
 export function HeroCard({ player }: { player: Player }) {
+  const { t } = useTranslation();
   return (
     <div className={styles.card}>
       <div className={styles.top}>
-        <span className="live-dot" /> OSTATNIO DOŁĄCZYŁA
+        <span className="live-dot" /> {t("heroCard.recentlyJoined")}
         <span>01 / 03</span>
       </div>
-      <img src={player.image} alt={`${player.username}, graczka League of Legends`} />
+      <img src={player.image} alt={t("heroCard.photoAlt", { name: player.username })} />
       <div className={styles.body}>
         <div>
           <h3>

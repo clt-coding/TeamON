@@ -1,14 +1,15 @@
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import type { Position } from "../../../types";
 import { Sidebar } from "./Sidebar";
+import { renderWithProviders } from "../../../test/renderWithProviders";
 
 function setup(
   overrides: Partial<{ collapsed: boolean; positions: Position[] }> = {},
 ) {
   const onCollapsedChange = vi.fn();
   const onPositionsChange = vi.fn();
-  render(
+  renderWithProviders(
     <Sidebar
       collapsed={overrides.collapsed ?? false}
       onCollapsedChange={onCollapsedChange}

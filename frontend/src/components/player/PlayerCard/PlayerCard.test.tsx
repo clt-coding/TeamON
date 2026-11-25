@@ -1,13 +1,14 @@
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { players } from "../../../data/players.mock";
 import { PlayerCard } from "./PlayerCard";
+import { renderWithProviders } from "../../../test/renderWithProviders";
 
 const player = players[0];
 
 describe("PlayerCard", () => {
   it("shows the player's key info", () => {
-    render(<PlayerCard player={player} onOpen={() => {}} />);
+    renderWithProviders(<PlayerCard player={player} onOpen={() => {}} />);
     expect(screen.getByRole("heading", { name: player.username })).toBeInTheDocument();
     expect(screen.getByText(String(player.age))).toBeInTheDocument();
     expect(screen.getByText(player.country)).toBeInTheDocument();
@@ -19,13 +20,13 @@ describe("PlayerCard", () => {
 
   it("shows OFFLINE for offline players", () => {
     const offline = players.find((p) => !p.online)!;
-    render(<PlayerCard player={offline} onOpen={() => {}} />);
+    renderWithProviders(<PlayerCard player={offline} onOpen={() => {}} />);
     expect(screen.getByText("OFFLINE")).toBeInTheDocument();
   });
 
   it("calls onOpen with the player when clicked", async () => {
     const onOpen = vi.fn();
-    render(<PlayerCard player={player} onOpen={onOpen} />);
+    renderWithProviders(<PlayerCard player={player} onOpen={onOpen} />);
     await userEvent.click(screen.getByRole("button"));
     expect(onOpen).toHaveBeenCalledWith(player);
   });
