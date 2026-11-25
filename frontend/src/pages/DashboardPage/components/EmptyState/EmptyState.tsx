@@ -1,17 +1,19 @@
+import { useTranslation } from "../../../../i18n";
 import styles from "./EmptyState.module.css";
 
 export function EmptyState({
-  title = "Brak graczy",
-  message = "Zmień filtry, aby zobaczyć więcej osób.",
+  title,
+  message,
 }: {
   title?: string;
   message?: string;
 }) {
+  const { t } = useTranslation();
   return (
     <div className={styles.empty}>
       <span>0</span>
-      <h2>{title}</h2>
-      <p>{message}</p>
+      <h2>{title ?? t("listings.emptyTitle")}</h2>
+      <p>{message ?? t("listings.emptyMessage")}</p>
     </div>
   );
 }
