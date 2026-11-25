@@ -1,0 +1,35 @@
+name: Frontend build
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "frontend/**"
+      - ".github/actions/setup-frontend/**"
+      - ".github/workflows/frontend-build.yml"
+  pull_request:
+    branches: [main]
+    paths:
+      - "frontend/**"
+      - ".github/actions/setup-frontend/**"
+      - ".github/workflows/frontend-build.yml"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Type-check & build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ./.github/actions/setup-frontend
+
+      - name: Build
+        working-directory: frontend
+        run: npm run build
