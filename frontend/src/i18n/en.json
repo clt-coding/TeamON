@@ -1,18 +1,10 @@
-import type { TranslationKey } from "./pl";
-
-/** English UI strings — must define exactly the same keys as `pl`. */
-export const en: Record<TranslationKey, string> = {
-  // Topbar
+{
   "topbar.gamesNav": "Games",
   "topbar.addGame": "+ ADD GAME",
   "topbar.myProfile": "My profile: {name}",
   "topbar.loggedInAs": "LOGGED IN AS",
-
-  // Shared UI
   "logo.home": "TeamON — home page",
   "languageToggle.label": "Choose language",
-
-  // Sidebar
   "sidebar.expand": "Expand filters",
   "sidebar.collapse": "Collapse filters",
   "sidebar.filters": "FILTERS",
@@ -29,8 +21,6 @@ export const en: Record<TranslationKey, string> = {
   "sidebar.yes": "Yes",
   "sidebar.no": "No",
   "sidebar.clearFilters": "Clear filters",
-
-  // Dashboard
   "dashboard.availablePlayers": "{count} AVAILABLE PLAYERS",
   "dashboard.newest": "NEWEST",
   "listings.kicker": "01 / PLAYERS",
@@ -41,8 +31,6 @@ export const en: Record<TranslationKey, string> = {
   "listings.searchLabel": "Search player",
   "listings.emptyTitle": "No players",
   "listings.emptyMessage": "Change the filters to see more people.",
-
-  // Player card & listing modal
   "card.photoAlt": "Profile photo of {name}",
   "modal.label": "Listing details",
   "modal.close": "Close",
@@ -54,23 +42,17 @@ export const en: Record<TranslationKey, string> = {
   "modal.sendRequest": "Send a join request",
   "modal.requestSent": "Request sent",
   "modal.viewProfile": "View profile",
-
-  // Landing
   "landing.eyebrow": "YOUR GAME. YOUR CREW.",
   "landing.titleLine1": "Stop playing",
   "landing.titleLine2": "with",
   "landing.titleAccent": "randoms.",
-  "landing.lead":
-    "Tired of playing with random people? Here you'll find a duo that fits you perfectly.",
+  "landing.lead": "Tired of playing with random people? Here you'll find a duo that fits you perfectly.",
   "landing.register": "Sign up",
   "landing.login": "Log in",
-  "landing.caption":
-    "Missing the last player on your team for a tournament? On TeamON you'll quickly find who you need.",
+  "landing.caption": "Missing the last player on your team for a tournament? On TeamON you'll quickly find who you need.",
   "heroCard.recentlyJoined": "RECENTLY JOINED",
   "heroCard.photoAlt": "{name}, League of Legends player",
   "socialProof.text": "players already looking for a team",
-
-  // Profile
   "profile.back": "← BACK TO LISTINGS",
   "profile.mine": "MY PROFILE",
   "profile.player": "PLAYER PROFILE",
@@ -86,9 +68,7 @@ export const en: Record<TranslationKey, string> = {
   "openListings.title": "Open listings",
   "openListings.listing": "LISTING · {position}",
   "openListings.details": "SEE DETAILS",
-
-  // 404
   "notFound.title": "Page not found",
   "notFound.message": "This page doesn't exist or the player deleted their profile.",
-  "notFound.back": "Back to listings",
-};
+  "notFound.back": "Back to listings"
+}

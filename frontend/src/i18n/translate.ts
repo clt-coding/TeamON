@@ -1,14 +1,17 @@
 import type { Language } from "../types";
-import { en } from "./en";
-import { pl } from "./pl";
-import type { TranslationKey } from "./pl";
+import enJson from "./en.json";
+import plJson from "./pl.json";
 
+/** Every UI string key; `pl.json` is the source of truth. */
+export type TranslationKey = keyof typeof plJson;
 export type TranslationParams = Record<string, string | number>;
+type Dictionary = Record<TranslationKey, string>;
 
-const dictionaries: Record<Language, Record<TranslationKey, string>> = {
-  PL: pl,
-  EN: en,
-};
+// Typing `en` as Dictionary makes the build fail if en.json is missing a key.
+const pl: Dictionary = plJson;
+const en: Dictionary = enJson;
+
+export const dictionaries: Record<Language, Dictionary> = { PL: pl, EN: en };
 
 /** Looks up `key` for `language` and fills `{param}` placeholders. */
 export function translate(

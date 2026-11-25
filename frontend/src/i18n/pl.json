@@ -1,16 +1,10 @@
-/** Polish UI strings — the source of truth for translation keys. */
-export const pl = {
-  // Topbar
+{
   "topbar.gamesNav": "Gry",
   "topbar.addGame": "+ DODAJ GRĘ",
   "topbar.myProfile": "Mój profil: {name}",
   "topbar.loggedInAs": "ZALOGOWANO JAKO",
-
-  // Shared UI
   "logo.home": "TeamON — strona główna",
   "languageToggle.label": "Wybierz język",
-
-  // Sidebar
   "sidebar.expand": "Rozwiń filtry",
   "sidebar.collapse": "Zwiń filtry",
   "sidebar.filters": "FILTRY",
@@ -27,8 +21,6 @@ export const pl = {
   "sidebar.yes": "Tak",
   "sidebar.no": "Nie",
   "sidebar.clearFilters": "Wyczyść filtry",
-
-  // Dashboard
   "dashboard.availablePlayers": "{count} DOSTĘPNYCH GRACZY",
   "dashboard.newest": "NAJNOWSZE",
   "listings.kicker": "01 / GRACZE",
@@ -39,8 +31,6 @@ export const pl = {
   "listings.searchLabel": "Szukaj gracza",
   "listings.emptyTitle": "Brak graczy",
   "listings.emptyMessage": "Zmień filtry, aby zobaczyć więcej osób.",
-
-  // Player card & listing modal
   "card.photoAlt": "Zdjęcie profilowe {name}",
   "modal.label": "Szczegóły ogłoszenia",
   "modal.close": "Zamknij",
@@ -52,23 +42,17 @@ export const pl = {
   "modal.sendRequest": "Wyślij prośbę o dołączenie",
   "modal.requestSent": "Prośba wysłana",
   "modal.viewProfile": "Zobacz profil",
-
-  // Landing
   "landing.eyebrow": "TWOJA GRA. TWOJA EKIPA.",
   "landing.titleLine1": "Przestań grać",
   "landing.titleLine2": "z",
   "landing.titleAccent": "przypadkiem.",
-  "landing.lead":
-    "Masz dość grania z losowymi osobami? Tutaj znajdziesz swoje duo idealnie pasujące do Ciebie.",
+  "landing.lead": "Masz dość grania z losowymi osobami? Tutaj znajdziesz swoje duo idealnie pasujące do Ciebie.",
   "landing.register": "Zarejestruj się",
   "landing.login": "Zaloguj się",
-  "landing.caption":
-    "Brakuje Wam ostatniej osoby w drużynie do zagrania na turnieju? W TeamON szybko znajdziesz brakującego gracza.",
+  "landing.caption": "Brakuje Wam ostatniej osoby w drużynie do zagrania na turnieju? W TeamON szybko znajdziesz brakującego gracza.",
   "heroCard.recentlyJoined": "OSTATNIO DOŁĄCZYŁA",
   "heroCard.photoAlt": "{name}, graczka League of Legends",
   "socialProof.text": "graczy już szuka drużyny",
-
-  // Profile
   "profile.back": "← WRÓĆ DO OGŁOSZEŃ",
   "profile.mine": "MÓJ PROFIL",
   "profile.player": "PROFIL GRACZA",
@@ -84,11 +68,7 @@ export const pl = {
   "openListings.title": "Otwarte ogłoszenia",
   "openListings.listing": "OGŁOSZENIE · {position}",
   "openListings.details": "ZOBACZ SZCZEGÓŁY",
-
-  // 404
   "notFound.title": "Nie znaleziono strony",
   "notFound.message": "Ta strona nie istnieje albo gracz usunął swój profil.",
-  "notFound.back": "Wróć do ogłoszeń",
-} as const;
-
-export type TranslationKey = keyof typeof pl;
+  "notFound.back": "Wróć do ogłoszeń"
+}
