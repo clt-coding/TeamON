@@ -1,0 +1,15 @@
+.empty {
+  min-height: 300px;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  color: #777480;
+}
+.empty > span {
+  font-size: 50px;
+  color: #3d3a45;
+}
+.empty h2 {
+  color: var(--white);
+  margin: 5px;
+}
