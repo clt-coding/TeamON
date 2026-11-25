@@ -1,0 +1,23 @@
+.logo {
+  position: relative;
+  display: inline-block;
+  font-size: 22px;
+  line-height: 1;
+  font-weight: 800;
+  letter-spacing: -1.5px;
+  cursor: pointer;
+}
+.logo span {
+  color: var(--purple-light);
+}
+.logo i {
+  display: block;
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--purple);
+  right: -7px;
+  top: -3px;
+  box-shadow: 0 0 12px var(--purple);
+}
