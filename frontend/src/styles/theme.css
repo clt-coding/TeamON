@@ -1,0 +1,25 @@
+/* Design tokens. Dark (black-purple) is the default theme. */
+:root {
+  --bg: #08080b;
+  --surface: #101014;
+  --surface-2: #16161c;
+  --line: #292832;
+  --muted: #9694a3;
+  --purple: #8c52ff;
+  --purple-light: #aa82ff;
+  --white: #f7f5fb;
+  color-scheme: dark;
+}
+
+/* Light (white-purple) theme: placeholder tokens, not wired to a toggle yet. */
+:root[data-theme="light"] {
+  --bg: #f7f5fb;
+  --surface: #ffffff;
+  --surface-2: #f0ecf9;
+  --line: #e0dcea;
+  --muted: #6b6878;
+  --purple: #7a3dff;
+  --purple-light: #8c52ff;
+  --white: #14121a;
+  color-scheme: light;
+}

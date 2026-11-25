@@ -1,0 +1,46 @@
+/* Small global helpers shared by many components. */
+.flag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 23px;
+  height: 15px;
+  margin-right: 5px;
+  border-radius: 2px;
+  color: #fff;
+  background: #383541;
+  font-size: 7px;
+  font-weight: 800;
+}
+.role-mark {
+  display: inline-flex;
+  flex: 0 0 auto;
+  width: 34px;
+  height: 34px;
+  align-items: center;
+  justify-content: center;
+  color: #cbb8ff;
+  border: 1px solid #704eb8;
+  background: #24183f;
+  border-radius: 50%;
+  font-size: 12px;
+  font-weight: 700;
+}
+.live-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #72f5a8;
+  box-shadow: 0 0 12px #72f5a8;
+}
+.kicker {
+  color: #b8b5c1;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+}
+.accent {
+  color: var(--purple-light);
+  font-style: normal;
+}
