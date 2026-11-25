@@ -1,0 +1,27 @@
+.page {
+  min-height: 60vh;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 8px;
+  padding: 40px 20px;
+  text-align: center;
+  color: var(--muted);
+}
+.page > span {
+  font-size: 64px;
+  font-weight: 800;
+  color: #3d3a45;
+}
+.page h1 {
+  margin: 0;
+  color: var(--white);
+  font-size: 28px;
+  letter-spacing: -0.04em;
+}
+.page a {
+  margin-top: 12px;
+  color: var(--purple-light);
+  font-size: 12px;
+  font-weight: 700;
+}

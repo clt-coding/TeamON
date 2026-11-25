@@ -1,0 +1,87 @@
+.page {
+  width: min(1180px, calc(100% - 50px));
+  margin: 0 auto;
+  padding: 40px 0 80px;
+}
+.backButton {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #777480;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  cursor: pointer;
+}
+.grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  margin: 35px 0 60px;
+  gap: 12px;
+}
+.bioPanel {
+  grid-row: span 2;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.tags {
+  display: flex;
+  gap: 7px;
+  flex-wrap: wrap;
+}
+.tags b {
+  padding: 8px 12px;
+  border: 1px solid #37353e;
+  border-radius: 99px;
+  color: #aaa7b2;
+  font-size: 9px;
+  font-weight: 500;
+}
+.gameRow {
+  display: flex;
+  align-items: center;
+  margin-top: 23px;
+}
+.gameRow > div {
+  width: 47px;
+  height: 47px;
+  display: grid;
+  place-items: center;
+  border-radius: 5px;
+  background: #2a1c49;
+  color: var(--purple-light);
+  font-size: 11px;
+  font-weight: 700;
+}
+.gameRow p {
+  display: grid;
+  margin: 0 0 0 12px;
+}
+.gameRow strong {
+  color: var(--white);
+  font-size: 11px;
+}
+.gameRow small {
+  margin-top: 5px;
+  font-size: 8px;
+}
+.gameRow > b {
+  margin-left: auto;
+  color: #6f6c77;
+  font-size: 10px;
+}
+
+@media (max-width: 740px) {
+  .page {
+    width: calc(100% - 36px);
+    padding-top: 25px;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .bioPanel {
+    min-height: 260px;
+  }
+}
