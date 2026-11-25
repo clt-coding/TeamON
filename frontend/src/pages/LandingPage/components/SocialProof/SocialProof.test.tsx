@@ -1,10 +1,11 @@
-import { render, screen } from "@testing-library/react";
+import { screen } from "@testing-library/react";
 import { players } from "../../../../data/players.mock";
 import { SocialProof } from "./SocialProof";
+import { renderWithProviders } from "../../../../test/renderWithProviders";
 
 describe("SocialProof", () => {
   it("renders one avatar per player and the count", () => {
-    const { container } = render(
+    const { container } = renderWithProviders(
       <SocialProof avatars={players.slice(0, 3)} count="4 800+" />,
     );
     expect(container.querySelectorAll("img")).toHaveLength(3);
