@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="badge" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0f2a1c"/>
+      <stop offset="1" stop-color="#06140d"/>
+    </linearGradient>
+    <linearGradient id="rim" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#d4ff3a"/>
+      <stop offset="1" stop-color="#22c55e"/>
+    </linearGradient>
+    <linearGradient id="cap" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#4ade80"/>
+      <stop offset="0.55" stop-color="#16a34a"/>
+      <stop offset="1" stop-color="#0b5d2a"/>
+    </linearGradient>
+    <linearGradient id="stem" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#f0fff4"/>
+      <stop offset="0.6" stop-color="#c9f5d6"/>
+      <stop offset="1" stop-color="#8fdcab"/>
+    </linearGradient>
+    <radialGradient id="spot" cx="0.38" cy="0.35" r="0.7">
+      <stop offset="0" stop-color="#f0b4ff"/>
+      <stop offset="0.55" stop-color="#b44dff"/>
+      <stop offset="1" stop-color="#6d1fb8"/>
+    </radialGradient>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="10" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <!-- hexagon badge -->
+  <path d="M256 22 L458 139 L458 373 L256 490 L54 373 L54 139 Z" fill="url(#badge)" stroke="url(#rim)" stroke-width="16" stroke-linejoin="round" filter="url(#glow)"/>
+  <path d="M256 52 L432 154 L432 358 L256 460 L80 358 L80 154 Z" fill="none" stroke="#1f5c36" stroke-width="4" stroke-linejoin="round"/>
+
+  <g stroke="#04110a" stroke-width="12" stroke-linejoin="round">
+    <!-- stem -->
+    <path d="M208 272 L304 272 C306 320 316 370 330 400 C300 418 212 418 182 400 C196 370 206 320 208 272 Z" fill="url(#stem)"/>
+    <!-- cap -->
+    <path d="M98 262 C92 160 168 96 256 96 C344 96 420 160 414 262 C412 284 390 292 362 286 C310 276 202 276 150 286 C122 292 100 284 98 262 Z" fill="url(#cap)"/>
+  </g>
+
+  <!-- stem shading + ring -->
+  <path d="M286 286 C290 330 298 368 310 396 C296 404 278 408 260 410 C282 380 284 330 276 286 Z" fill="#6fc792" opacity="0.6"/>
+  <path d="M200 300 C236 312 276 312 312 300" fill="none" stroke="#04110a" stroke-width="8" stroke-linecap="round" opacity="0.55"/>
+
+  <!-- cap underside shade -->
+  <path d="M150 272 C210 260 302 260 362 272 C390 278 406 272 410 256 C398 268 380 270 362 266 C300 254 212 254 150 266 C132 270 114 268 102 256 C106 272 122 278 150 272 Z" fill="#053d1b" opacity="0.8"/>
+  <!-- lime rim light on cap -->
+  <path d="M128 196 C140 146 186 114 236 108" fill="none" stroke="#d4ff3a" stroke-width="12" stroke-linecap="round"/>
+
+  <!-- purple spots -->
+  <g stroke="#04110a" stroke-width="7">
+    <circle cx="256" cy="150" r="26" fill="url(#spot)"/>
+    <circle cx="178" cy="214" r="20" fill="url(#spot)"/>
+    <circle cx="338" cy="196" r="22" fill="url(#spot)"/>
+    <circle cx="380" cy="246" r="11" fill="url(#spot)"/>
+    <circle cx="258" cy="226" r="13" fill="url(#spot)"/>
+    <circle cx="140" cy="252" r="9" fill="url(#spot)"/>
+  </g>
+  <!-- spot glints -->
+  <g fill="#ffffff" opacity="0.85">
+    <circle cx="247" cy="141" r="6"/>
+    <circle cx="171" cy="207" r="5"/>
+    <circle cx="330" cy="188" r="5"/>
+  </g>
+
+  <!-- ground tuft -->
+  <path d="M150 404 C200 392 312 392 362 404" fill="none" stroke="#d4ff3a" stroke-width="10" stroke-linecap="round" filter="url(#glow)"/>
+</svg>
