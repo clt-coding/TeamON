@@ -1,0 +1,35 @@
+name: Frontend tests
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "frontend/**"
+      - ".github/actions/setup-frontend/**"
+      - ".github/workflows/frontend-tests.yml"
+  pull_request:
+    branches: [main]
+    paths:
+      - "frontend/**"
+      - ".github/actions/setup-frontend/**"
+      - ".github/workflows/frontend-tests.yml"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Vitest
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ./.github/actions/setup-frontend
+
+      - name: Run tests
+        working-directory: frontend
+        run: npm run test:run

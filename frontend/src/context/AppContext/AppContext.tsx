@@ -1,15 +1,7 @@
-import { createContext, useState } from "react";
+import { useState } from "react";
 import type { ReactNode } from "react";
 import type { Language } from "../../types";
-
-export interface AppContextValue {
-  language: Language;
-  setLanguage: (language: Language) => void;
-}
-
-export const AppContext = createContext<AppContextValue | undefined>(
-  undefined,
-);
+import { AppContext } from "./context";
 
 export function AppProvider({
   children,
