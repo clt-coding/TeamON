@@ -42,3 +42,40 @@ describe("App routing", () => {
     expect(screen.getByRole("heading", { name: "Nie znaleziono strony" })).toBeInTheDocument();
   });
 });
+
+describe("App language switch", () => {
+  it("switches the dashboard text and aria-labels to English", async () => {
+    renderWithProviders(<App />, { initialEntries: ["/dashboard"] });
+    expect(screen.getByRole("heading", { name: "Czego szukasz?" })).toBeInTheDocument();
+
+    await userEvent.click(screen.getByRole("button", { name: "EN" }));
+
+    expect(screen.getByRole("heading", { name: "What are you looking for?" })).toBeInTheDocument();
+    expect(screen.queryByRole("heading", { name: "Czego szukasz?" })).not.toBeInTheDocument();
+    expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("Find your team.");
+    expect(screen.getByRole("button", { name: "Clear filters" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Collapse filters" })).toBeInTheDocument();
+    expect(screen.getByRole("group", { name: "Choose language" })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "My profile: Nyxie" })).toBeInTheDocument();
+    expect(screen.getByPlaceholderText("Search player...")).toBeInTheDocument();
+  });
+
+  it("shows the listing modal in English", async () => {
+    renderWithProviders(<App />, { initialEntries: ["/dashboard"] });
+    await userEvent.click(screen.getByRole("button", { name: "EN" }));
+    await userEvent.click(screen.getByRole("button", { name: /Profile photo of Vexon/ }));
+
+    const dialog = screen.getByRole("dialog", { name: "Listing details" });
+    expect(within(dialog).getByRole("button", { name: "View profile" })).toBeInTheDocument();
+    expect(within(dialog).getByRole("button", { name: "Close" })).toBeInTheDocument();
+  });
+
+  it("switches back to Polish", async () => {
+    renderWithProviders(<App />);
+    await userEvent.click(screen.getByRole("button", { name: "EN" }));
+    expect(screen.getByRole("button", { name: "Log in" })).toBeInTheDocument();
+
+    await userEvent.click(screen.getByRole("button", { name: "PL" }));
+    expect(screen.getByRole("button", { name: "Zaloguj się" })).toBeInTheDocument();
+  });
+});

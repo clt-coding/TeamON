@@ -11,4 +11,10 @@ describe("NotFoundPage", () => {
       "/dashboard",
     );
   });
+
+  it("is shown in English when EN is selected", () => {
+    renderWithProviders(<NotFoundPage />, { language: "EN" });
+    expect(screen.getByRole("heading", { name: "Page not found" })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "Back to listings" })).toBeInTheDocument();
+  });
 });
