@@ -1,115 +1,229 @@
 .card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
   min-width: 0;
-  padding: 0;
-  overflow: hidden;
+  container-type: inline-size;
+  padding: 14px;
   text-align: left;
-  border: 1px solid #292832;
-  background: #121217;
-  border-radius: 4px;
+  color: var(--white);
+  border: 1px solid var(--line);
+  background: var(--surface);
+  border-radius: 6px;
   cursor: pointer;
   transition:
     border-color 0.2s,
     transform 0.2s;
 }
+.card:hover,
+.card:focus-visible {
+  border-color: var(--purple);
+}
 .card:hover {
-  border-color: #7250b9;
   transform: translateY(-3px);
 }
-.image {
+
+/* Header: avatar | name + tags | rank emblem */
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+.avatar {
   position: relative;
-  aspect-ratio: 1.8;
-  overflow: hidden;
-  background: #17171d;
+  flex: 0 0 56px;
+  width: 56px;
+  height: 56px;
 }
-.image::after {
-  content: "";
-  position: absolute;
-  inset: 45% 0 0;
-  background: linear-gradient(transparent, rgba(7, 7, 10, 0.72));
-}
-.image img {
+.avatar img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center 27%;
-  filter: saturate(0.68) contrast(1.02);
-  transition: transform 0.4s ease;
-}
-.card:hover .image img {
-  transform: scale(1.035);
-}
-.status {
-  position: absolute;
-  z-index: 2;
-  top: 10px;
-  left: 10px;
-  padding: 5px 7px;
-  border-radius: 2px;
-  background: rgba(10, 10, 13, 0.78);
-  color: #75727e;
-  font-size: 7px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  backdrop-filter: blur(6px);
-}
-.status::before {
-  content: "";
-  display: inline-block;
-  width: 5px;
-  height: 5px;
-  margin-right: 5px;
+  border: 2px solid var(--line);
   border-radius: 50%;
-  background: #64616b;
+  background: var(--surface-2);
 }
-.status.online {
-  color: #bdffd4;
+.dot {
+  position: absolute;
+  right: 2px;
+  bottom: 2px;
+  width: 12px;
+  height: 12px;
+  border: 2px solid var(--surface);
+  border-radius: 50%;
+  background: var(--muted);
 }
-.status.online::before {
+.dot.online {
   background: #6bec9e;
   box-shadow: 0 0 7px #6bec9e;
 }
-.roleMark {
-  position: absolute;
-  z-index: 2;
-  right: 10px;
-  bottom: 10px;
-  width: 28px;
-  height: 28px;
-}
 
-.body {
-  padding: 13px 14px 14px;
-}
 .name {
   display: flex;
-  align-items: baseline;
-  gap: 7px;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
 }
 .name h3 {
   margin: 0;
-  font-size: 15px;
+  font-size: 16px;
+  line-height: 1.2;
   letter-spacing: -0.02em;
+  overflow-wrap: anywhere;
 }
 .name > span {
-  color: #76737e;
-  font-size: 11px;
+  color: var(--muted);
+  font-size: 12px;
 }
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 12px;
+}
+.positions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+/* Extra roles are muted; the main (first) role is highlighted. */
+.position {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 600;
+}
+.position:not(.main) .roleMark {
+  opacity: 0.6;
+}
+.position.main {
+  color: var(--purple-light);
+}
+.roleMark {
+  width: 22px;
+  height: 22px;
+  font-size: 10px;
+}
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+.status::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+.status.online::before {
+  background: #6bec9e;
+}
+
+/* Rank emblem, a little bigger than the avatar, with its name under it */
+.rank {
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  width: 92px;
+}
+.rank img {
+  width: 84px;
+  height: 84px;
+  object-fit: contain;
+}
+.rank span {
+  color: var(--white);
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+}
+
 .title {
   overflow: hidden;
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
   white-space: nowrap;
   text-overflow: ellipsis;
-  margin: 7px 0 13px;
-  color: #aaa7b2;
-  font-size: 9px;
 }
+
+.champions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.champions li {
+  padding: 3px 8px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface-2);
+  color: var(--white);
+  font-size: 11px;
+}
+
 .meta {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
-  color: #65626d;
-  font-size: 8px;
+  gap: 6px 14px;
+  margin-top: auto;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 11px;
 }
 .meta > span {
-  display: flex;
+  display: inline-flex;
   align-items: center;
+  gap: 5px;
+}
+
+/* Narrow cards (3 columns in a small window): smaller avatar and emblem. */
+@container (max-width: 240px) {
+  .avatar {
+    flex-basis: 44px;
+    width: 44px;
+    height: 44px;
+  }
+  .rank {
+    width: 70px;
+  }
+  .rank img {
+    width: 64px;
+    height: 64px;
+  }
+  .name h3 {
+    font-size: 14px;
+  }
+  /* Extra roles collapse to their letter badge; the name stays for screen readers. */
+  .position:not(.main) .roleName {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+  .positions {
+    gap: 6px;
+  }
 }

@@ -10,3 +10,7 @@ Built as a dedicated alternative to generic Discord servers, TeamON solves the s
 * **Advanced Filtering:** Easily search the database by specific positions (Top, Jungle, Mid, Bot, Support), ranks, and voice-chat preferences.
 * **Dynamic Listing System:** Post custom team announcements detailing exactly who you are looking for, or browse and apply to open slots.
 * **Secure Matchmaking:** Discord tags remain private until a team captain officially accepts a player's application, ensuring safe and organized communication.
+
+### Credits
+
+Rank emblems in `frontend/public/ranks/` are the Season 2023 (Split 2) rank crests from the [League of Legends Wiki](https://wiki.leagueoflegends.com/en-us/Rank). League of Legends and its artwork are © Riot Games, used under Riot's [Legal Jibber Jabber](https://www.riotgames.com/en/legal) fan-content policy. TeamON isn't endorsed by Riot Games.

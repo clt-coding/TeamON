@@ -27,7 +27,7 @@ export function ProfileHeader({ player, isOwnProfile }: ProfileHeaderProps) {
           <i />
           {player.languages.join(" / ")}
           <i />
-          {player.position} · {player.rank}
+          {player.positions.join(" / ")} · {player.rank}
         </p>
       </div>
       {isOwnProfile ? (

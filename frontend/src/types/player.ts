@@ -15,7 +15,8 @@ export type Player = {
   country: string;
   flag: string;
   languages: string[];
-  position: Position;
+  /** Roles the player plays; the first one is their main role. */
+  positions: Position[];
   rank: string;
   /** Short listing headline, e.g. "Szukam osoby do grania wieczorkami :)" */
   title: string;

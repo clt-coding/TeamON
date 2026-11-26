@@ -9,7 +9,7 @@ export function filterPlayers(
   const query = search.trim().toLowerCase();
   return players.filter(
     (player) =>
-      (!positions.length || positions.includes(player.position)) &&
+      (!positions.length || player.positions.some((position) => positions.includes(position))) &&
       (player.username.toLowerCase().includes(query) ||
         player.title.toLowerCase().includes(query)),
   );
