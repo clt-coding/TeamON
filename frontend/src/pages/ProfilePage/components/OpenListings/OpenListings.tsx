@@ -26,7 +26,7 @@ export function OpenListings({ listings, onOpen }: OpenListingsProps) {
           <div className={styles.copy}>
             <span>
               {t("openListings.listing", {
-                position: listing.position.toUpperCase(),
+                position: listing.positions.join(" / ").toUpperCase(),
               })}
             </span>
             <h3>{listing.title}</h3>

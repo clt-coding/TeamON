@@ -23,7 +23,7 @@ export function HeroCard({ player }: { player: Player }) {
             {player.languages.join(" / ")}
           </p>
         </div>
-        <span className="role-mark">{positionMarks[player.position]}</span>
+        <span className="role-mark">{positionMarks[player.positions[0]]}</span>
       </div>
     </div>
   );

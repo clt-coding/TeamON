@@ -21,8 +21,9 @@ describe("DashboardPage", () => {
 
   it("filters by position", async () => {
     renderWithProviders(<DashboardPage />);
-    await userEvent.click(screen.getByRole("button", { name: /Jungle/ }));
-    expect(cardHeadings()).toEqual(["Vexon"]);
+    await userEvent.click(screen.getByRole("button", { name: /Jungle/, pressed: false }));
+    // Everyone who plays Jungle, as a main or extra role.
+    expect(cardHeadings().sort()).toEqual(["Pixel", "Rewen", "Vexon"]);
   });
 
   it("filters by search text", async () => {

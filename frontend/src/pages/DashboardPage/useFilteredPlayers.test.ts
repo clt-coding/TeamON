@@ -10,7 +10,9 @@ describe("filterPlayers", () => {
   it("filters by any of the selected positions", () => {
     const result = filterPlayers(players, ["Top", "Mid"], "");
     expect(result.length).toBeGreaterThan(0);
-    expect(result.every((p) => ["Top", "Mid"].includes(p.position))).toBe(true);
+    expect(
+      result.every((p) => p.positions.some((pos) => ["Top", "Mid"].includes(pos))),
+    ).toBe(true);
   });
 
   it("searches username case-insensitively", () => {
@@ -25,6 +27,11 @@ describe("filterPlayers", () => {
     ).toContain("Rewen");
   });
 
+  it("matches players by any of their roles", () => {
+    const result = filterPlayers(players, ["Jungle"], "").map((p) => p.username);
+    expect(result).toEqual(expect.arrayContaining(["Vexon", "Rewen", "Pixel"]));
+  });
+
   it("combines position and search", () => {
     expect(filterPlayers(players, ["Jungle"], "nyx")).toEqual([]);
   });
@@ -35,6 +42,6 @@ describe("useFilteredPlayers", () => {
     const { result } = renderHook(() =>
       useFilteredPlayers(players, ["Support"], ""),
     );
-    expect(result.current.every((p) => p.position === "Support")).toBe(true);
+    expect(result.current.every((p) => p.positions.includes("Support"))).toBe(true);
   });
 });
